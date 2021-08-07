@@ -141,10 +141,11 @@ func getFilelist(path string) {
 		/** 找到一个文件 */
 		/** 判断是不是图片 */
 		localPath, format, _ := isPictureFormat(pathFound)
+        oldfilename:=filepath.Base(localPath)
 		/** 随机数 */
-		t := time.Now()
-		millis := t.Nanosecond() /** 纳秒 */
-		outputPath := inputArgs.OutputPath + strconv.FormatInt(int64(millis), 10) + "." + format
+		//t := time.Now()
+		//millis := t.Nanosecond() /** 纳秒 */
+		outputPath := inputArgs.OutputPath + oldfilename // strconv.FormatInt(int64(millis), 10) + "." + format
 		if localPath != "" {
 			if !imageCompress(
 				func() (io.Reader, error) {
