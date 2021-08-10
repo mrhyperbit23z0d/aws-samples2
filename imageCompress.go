@@ -198,7 +198,9 @@ func execute() {
 	reader := bufio.NewReader(os.Stdin)
 	data, _, _ := reader.ReadLine()
 	/** 分割 */
-	strPice := strings.Split(string(data), " ") /** 空格 */
+	reg := regexp.MustCompile("\\s+")
+	inputstr:= reg.ReplaceAllString(string(data), " ") //多个空格替换为一个
+	strPice := strings.Split(inputstr, " ") /** 空格 */
 	if len(strPice) < 3 {
 		fmt.Printf("输入有误，参数数量不足,请重新输入或退出程序：")
 		execute()
