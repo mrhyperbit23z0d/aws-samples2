@@ -183,7 +183,7 @@ func isPictureFormat(path string) (string, string, string) {
 	// fmt.Println(temp[1]+"---")
 	/** 添加其他格式 */
 	if mapRule[temp[1]] == 1 {
-		println(temp[1])
+		//println(temp[1])
 		return path, temp[1], temp[0]
 	} else {
 		return "", "", ""
@@ -216,11 +216,13 @@ func execute() {
 		/** 目录 */
 		/** 如果输入目录，那么是批量 */
 		fmt.Println("开始批量压缩...")
+        inputArgs.OutputPath = filepath.Dir(inputArgs.LocalPath) + string(os.PathSeparator) + "LghImageCompress" + string(os.PathSeparator)
+        /*
 		rs := []rune(inputArgs.LocalPath)
 		end := len(rs)
 		substr := string(rs[end-1 : end])
 		if substr == "/" {
-			/** 有 / */
+			// 有 / 
 			rs := []rune(inputArgs.LocalPath)
 			end := len(rs)
 			substr := string(rs[0 : end-1])
@@ -229,7 +231,7 @@ func execute() {
 		} else {
 			endIndex := strings.LastIndex(inputArgs.LocalPath, "/")
 			inputArgs.OutputPath = string(rs[0:endIndex]) + "/LghImageCompress/"
-		}
+		}*/
 		getFilelist(inputArgs.LocalPath)
 		fmt.Println("图片保存在文件夹 " + inputArgs.OutputPath)
 	} else {
